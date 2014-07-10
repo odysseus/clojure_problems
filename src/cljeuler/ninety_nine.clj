@@ -374,11 +374,10 @@
   (if (not (even? n))
     nil
     (loop [[ahead & atail :as aprimes] (primes-in-range 1 n)
-           [bhead & btail :as bprimes] (primes-in-range 1 n)]
+           [bhead & btail :as bprimes] aprimes]
       (if (empty? bprimes)
           (recur atail atail)
         (if (= (+ ahead bhead) n)
           (list ahead bhead)
           (recur aprimes btail))))))
-
 

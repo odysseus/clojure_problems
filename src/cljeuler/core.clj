@@ -35,4 +35,6 @@
   (println (nn/prime-factors-mult 315))
   (println (nn/improved-phi 10090))
   (println (nn/primes-in-range 1 100))
-  (println (nn/goldbach 28)))
+  (println (nn/goldbach 28))
+  (println (nn/total (range 1 26)))
+  (println (nn/tail-total (range 1 26))))
