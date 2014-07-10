@@ -107,3 +107,32 @@
     (def data (filter #(Character/isDigit %) (slurp (io/resource "eu8.txt"))))
     (apply max (map prodl (partition 13 1 data)))))
 
+(defn py-trips
+  "Finds a set of pythagorean triplets given m and n"
+  [m n]
+  (defn find-trips [m n]
+    (list (- (square m) (square n)) (* 2 m n) (+ (square m) (square n))))
+  (if (> n m)
+    (find-trips n m)
+    (find-trips m n)))
+
+(defn eu9
+  "Find the product of a, b, and c where a, b, and c are the only pythagorean
+  triplets whose sum is equal to 1,000"
+  []
+  )
+
+(defn combinations
+  "Find all combinations of K distinct items from a set of N elements."
+  [sq k]
+  (if (zero? k)
+    '(())
+    (if (empty? sq)
+      nil
+      (let
+        [[head & tail] sq
+         with-head (combinations tail (dec k))
+         without-head (combinations tail k)]
+        (concat (map #(conj % head) with-head) without-head)))))
+
+
